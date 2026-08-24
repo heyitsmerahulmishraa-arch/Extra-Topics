@@ -1923,4 +1923,243 @@ console.log(`My name is ${name} and I am ${age} years old.`); // Output: My name
 # Numbers & Math in JavaScript
 Numbers in JavaScript are used to represent both integer and floating-point values. JavaScript provides a variety of built-in methods and properties for performing mathematical operations, as well as the `Math` object, which contains constants and functions for advanced mathematical calculations.
 
+## Number Types
+JavaScript has a single number type, which is a double-precision 64-bit binary format IEEE 754 value. This means that all numbers in JavaScript are treated as floating-point values, even if they are whole numbers (integers). However, JavaScript also provides the `BigInt` type for representing integers larger than the maximum safe integer value.
+
+### Example of Number Types
+```js
+const integer = 42; // Integer
+const floatingPoint = 3.14; // Floating-point number
+const bigInt = 9007199254740991n; // BigInt (note the 'n' at the end)
+console.log(typeof integer); // Output: number
+console.log(typeof floatingPoint); // Output: number
+console.log(typeof bigInt); // Output: bigint
+```
+
+## NaN (Not-a-Number)
+`NaN` stands for "Not-a-Number" and represents a value that is not a legal number. It is typically the result of an invalid mathematical operation.
+
+### Example of NaN
+```js
+const result = "Hello" / 2; // Invalid operation
+console.log(result); // Output: NaN
+console.log(Number.isNaN(result)); // Output: true (checks if the value is NaN)
+```
+
+## Infinity and -Infinity
+`Infinity` and `-Infinity` are special numeric values in JavaScript that represent positive and negative infinity, respectively. They can result from mathematical operations that exceed the largest representable number or from division by zero.
+
+### Example of Infinity and -Infinity
+```js
+const positiveInfinity = 1 / 0; // Division by zero
+const negativeInfinity = -1 / 0; // Division by zero with a negative numerator
+console.log(positiveInfinity); // Output: Infinity
+console.log(negativeInfinity); // Output: -Infinity
+```
+
+## Number.isNaN()
+The `Number.isNaN()` method is used to determine whether a value is `NaN` (Not-a-Number). It is a more reliable way to check for `NaN` compared to the global `isNaN()` function, as it does not coerce the value to a number before checking.
+
+### Example of Number.isNaN()
+```js
+const value1 = NaN;
+const value2 = "Hello";
+console.log(Number.isNaN(value1)); // Output: true (value1 is NaN)
+console.log(Number.isNaN(value2)); // Output: false (value2 is not NaN)
+```
+
+## Number.isFinite()
+The `Number.isFinite()` method is used to determine whether a value is a finite number. It returns `true` if the value is a finite number and `false` if it is `NaN`, `Infinity`, or `-Infinity`. This method does not coerce the value to a number before checking, making it more reliable than the global `isFinite()` function.
+
+### Example of Number.isFinite()
+```js
+const finiteValue = 42;
+const infiniteValue = Infinity;
+const notANumber = NaN;
+console.log(Number.isFinite(finiteValue)); // Output: true (finiteValue is a finite number)
+console.log(Number.isFinite(infiniteValue)); // Output: false (infiniteValue is not finite)
+console.log(Number.isFinite(notANumber)); // Output: false (notANumber is not finite)
+```
+
+## Number.isInteger()
+The `Number.isInteger()` method is used to determine whether a value is an integer. It returns `true` if the value is an integer and `false` if it is not. This method does not coerce the value to a number before checking, making it more reliable than the global `isInteger()` function.
+
+### Example of Number.isInteger()
+```js
+const integerValue = 42;
+const floatingPointValue = 3.14;
+console.log(Number.isInteger(integerValue)); // Output: true (integerValue is an integer)
+console.log(Number.isInteger(floatingPointValue)); // Output: false (floatingPointValue is not an integer)
+```
+
+## parseInt()
+The `parseInt()` function in JavaScript is used to convert a string into an integer. It parses the string until it encounters a character that is not a valid digit, and then returns the integer value. The function can also take an optional second argument called the radix, which specifies the base of the numeral system to be used (e.g., base 10 for decimal, base 16 for hexadecimal).
+
+### Syntax
+```js
+parseInt(string, radix);
+```
+
+### Example of parseInt()
+```js
+const decimalString = "42";
+const hexadecimalString = "2A";
+
+console.log(parseInt(decimalString, 10)); // Output: 42 (decimal)
+console.log(parseInt(hexadecimalString, 16)); // Output: 42 (hexadecimal)
+```
+
+## parseFloat()
+The `parseFloat()` function in JavaScript is used to convert a string into a floating-point number. It parses the string until it encounters a character that is not a valid digit or decimal point, and then returns the floating-point value.
+
+### Syntax
+```js
+parseFloat(string);
+```
+
+### Example of parseFloat()
+```js
+const floatString = "3.14";
+console.log(parseFloat(floatString)); // Output: 3.14 (floating-point number)
+```
+
+## toFixed()
+The `toFixed()` method in JavaScript is used to format a number to a specified number of decimal places and returns the result as a string. It is particularly useful for displaying numbers in a more readable format, especially when dealing with currency or percentages.
+
+### Syntax
+```js
+number.toFixed(digits);
+```
+
+### Example of toFixed()
+```js
+const num = 3.14159;
+console.log(num.toFixed(2)); // Output: "3.14" (formatted to 2 decimal places)
+console.log(num.toFixed(4)); // Output: "3.1416" (formatted to 4 decimal places)
+console.log(num.toFixed(0)); // Output: "3" (formatted to 0 decimal places)
+```
+
+## Math.round()
+The `Math.round()` function in JavaScript is used to round a number to the nearest integer. If the fractional part of the number is 0.5 or greater, the argument is rounded to the next higher integer. If the fractional part is less than 0.5, the argument is rounded to the next lower integer.
+
+### Syntax
+```js
+Math.round(x);
+```
+
+### Example of Math.round()
+```js
+const num1 = 3.2;
+const num2 = 3.5;
+const num3 = 3.8;
+console.log(Math.round(num1)); // Output: 3 (rounded down)
+console.log(Math.round(num2)); // Output: 4 (rounded up)
+console.log(Math.round(num3)); // Output: 4 (rounded up)
+```
+
+## Math.floor()
+The `Math.floor()` function in JavaScript is used to round a number down to the nearest integer. It always rounds towards negative infinity, meaning it will return the largest integer less than or equal to the given number.
+
+### Syntax
+```js
+Math.floor(x);
+```
+
+### Example of Math.floor()
+```js
+const num1 = 3.7;
+const num2 = -3.7;
+console.log(Math.floor(num1)); // Output: 3 (rounded down)
+console.log(Math.floor(num2)); // Output: -4 (rounded down)
+```
+
+## Math.ceil()
+The `Math.ceil()` function in JavaScript is used to round a number up to the nearest integer. It always rounds towards positive infinity, meaning it will return the smallest integer greater than or equal to the given number.
+
+### Syntax
+```js
+Math.ceil(x);
+```
+
+### Example of Math.ceil()
+```js
+const num1 = 3.2;
+const num2 = -3.2;
+console.log(Math.ceil(num1)); // Output: 4 (rounded up)
+console.log(Math.ceil(num2)); // Output: -3 (rounded up)
+```
+
+## Math.random()
+The `Math.random()` function in JavaScript is used to generate a pseudo-random floating-point number between 0 (inclusive) and 1 (exclusive). This means that the generated number can be 0 but will always be less than 1. It is commonly used for generating random values, such as for games, simulations, or random sampling.
+
+### Syntax
+```js
+Math.random();
+```
+
+### Example of Math.random()
+```js
+const randomNum = Math.random();
+console.log(randomNum); // Output: A random number between 0 (inclusive) and 1 (exclusive), e.g., 0.123456789
+```
+
+## Math.max() and Math.min()
+The `Math.max()` and `Math.min()` functions in JavaScript are used to find the maximum and minimum values from a set of numbers, respectively. They can take any number of arguments and return the largest or smallest value among them.
+
+### Syntax
+```js
+Math.max(value1, value2, ...);
+Math.min(value1, value2, ...);
+```
+
+### Example of Math.max() and Math.min()
+```js
+const maxNum = Math.max(10, 20, 5, 15);
+const minNum = Math.min(10, 20, 5, 15);
+console.log(maxNum); // Output: 20 (the maximum value)
+console.log(minNum); // Output: 5 (the minimum value)
+```
+
+## Math.abs()
+The `Math.abs()` function in JavaScript is used to return the absolute value of a number. The absolute value of a number is its distance from zero on the number line, regardless of whether it is positive or negative. This means that `Math.abs()` will always return a non-negative number.
+
+### Syntax
+```js
+Math.abs(x);
+```
+
+### Example of Math.abs()
+```js
+const positiveNum = 5;
+const negativeNum = -5;
+console.log(Math.abs(positiveNum)); // Output: 5 (absolute value of 5)
+console.log(Math.abs(negativeNum)); // Output: 5 (absolute value of -5)
+```
+
+## Math.pow()
+The `Math.pow()` function in JavaScript is used to calculate the power of a number. It takes two arguments: the base and the exponent, and returns the result of raising the base to the power of the exponent.
+
+### Syntax
+```js
+Math.pow(base, exponent);
+```
+
+### Example of Math.pow()
+```js
+const base = 2;
+const exponent = 3;
+console.log(Math.pow(base, exponent)); // Output: 8 (2 raised to the power of 3)
+```
+
+## BigInt
+The `BigInt` type in JavaScript is used to represent integers that are larger than the maximum safe integer value for the `Number` type. It allows you to work with arbitrarily large integers without losing precision. BigInt values are created by appending an "n" to the end of an integer literal or by using the `BigInt()` constructor.
+
+### Example of BigInt
+```js
+const bigIntValue = 9007199254740991n; // BigInt literal
+const anotherBigInt = BigInt("9007199254740992"); // BigInt using constructor
+console.log(bigIntValue); // Output: 9007199254740991n
+console.log(anotherBigInt); // Output: 9007199254740992n
+```
+
 
