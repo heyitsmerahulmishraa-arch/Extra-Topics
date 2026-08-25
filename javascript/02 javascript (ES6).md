@@ -1714,3 +1714,724 @@ setTimeout(() => {
     controller.abort();
 }, 1000);
 ```
+
+# Fetch & APIs
+
+## HTTP basics
+HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the web. It defines how messages are formatted and transmitted between clients (such as web browsers) and servers. HTTP operates as a request-response protocol, where a client sends a request to a server, and the server responds with the requested resource or an error message.
+
+### HTTP Methods:
+- **GET**: Requests data from a specified resource. It should not have any side effects and is used for retrieving information.
+- **POST**: Submits data to be processed to a specified resource. It can create new resources or trigger server-side actions.
+- **PUT**: Updates a specified resource with the provided data. It can create a new resource if it does not exist.
+- **DELETE**: Deletes a specified resource.
+
+### HTTP Status Codes:
+- **200 OK**: The request was successful, and the server returned the requested data.
+- **201 Created**: The request was successful, and a new resource was created.
+- **400 Bad Request**: The server could not understand the request due to invalid syntax.
+- **401 Unauthorized**: The client must authenticate itself to get the requested response.
+- **403 Forbidden**: The client does not have access rights to the content.
+- **404 Not Found**: The server could not find the requested resource.
+- **500 Internal Server Error**: The server encountered an unexpected condition that prevented it from fulfilling the request.
+
+## Request & Response
+In the context of HTTP, a request is sent by a client to a server to perform an action or retrieve data. The request consists of a method (such as GET or POST), a URL, headers, and an optional body containing data. The server processes the request and sends back a response, which includes a status code, headers, and an optional body containing the requested data or an error message.
+
+### Example of a Request:
+```http
+GET /api/data HTTP/1.1
+Host: example.com
+```
+### Example of a Response:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com"
+}
+```
+
+## GET
+The GET method is used to request data from a specified resource. It is one of the most common HTTP methods and is typically used to retrieve information without causing any side effects on the server. GET requests can include query parameters in the URL to filter or specify the data being requested.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data received:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+```
+
+## POST
+The POST method is used to submit data to a specified resource for processing. It is commonly used to create new resources or trigger server-side actions. POST requests typically include a body containing the data to be sent to the server, and they can have side effects on the server, such as creating a new record in a database.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'John Doe', email: 'john@example.com' })
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data created:', data);
+    })
+    .catch(error => {
+        console.error('Error creating data:', error);
+    });
+```
+
+## PUT
+The PUT method is used to update a specified resource with the provided data. It can also create a new resource if it does not already exist. PUT requests typically include a body containing the updated data, and they are idempotent, meaning that multiple identical requests will have the same effect as a single request.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data/1', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'Jane Doe', email: 'jane@example.com' })
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data updated:', data);
+    })
+    .catch(error => {
+        console.error('Error updating data:', error);
+    });
+```
+
+## PATCH
+The PATCH method is used to apply partial modifications to a specified resource. Unlike PUT, which replaces the entire resource, PATCH allows you to update only specific fields of the resource. PATCH requests typically include a body containing the changes to be applied, and they are also idempotent.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data/1', {
+    method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email: 'mark@example.com' })
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data partially updated:', data);
+    })
+    .catch(error => {
+        console.error('Error partially updating data:', error);
+    });
+```
+
+## DELETE
+The DELETE method is used to remove a specified resource from the server. It is commonly used to delete records or data entries. DELETE requests typically do not include a body, and they are idempotent, meaning that multiple identical requests will have the same effect as a single request.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data/1', {
+    method: 'DELETE'
+})
+    .then(response => {
+        if (response.ok) {
+            console.log('Data deleted successfully');
+        } else {
+            console.error('Error deleting data:', response.status);
+        }
+    })
+    .catch(error => {
+        console.error('Error deleting data:', error);
+    });
+```
+
+## fetch()
+The `fetch()` function is a modern JavaScript API that provides a way to make network requests and handle responses. It returns a Promise that resolves to the Response object representing the response to the request. The `fetch()` function can be used to perform various HTTP methods, such as GET, POST, PUT, PATCH, and DELETE.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data received:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+```
+
+## Request headers
+Request headers are key-value pairs sent by the client to the server as part of an HTTP request. They provide additional information about the request, such as the content type, authorization credentials, and caching directives. Request headers can be used to customize the behavior of the server and control how the request is processed.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer your-access-token'
+    }
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data received:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+```
+
+## Request body
+The request body is the data sent by the client to the server as part of an HTTP request. It is typically used with methods like POST, PUT, and PATCH to send data that the server needs to process. The request body can contain various types of data, such as JSON, form data, or binary data, depending on the content type specified in the request headers.
+
+### Example:
+```javascript
+fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'John Doe', email: 'mark@example.com' })
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data created:', data);
+    })
+    .catch(error => {
+        console.error('Error creating data:', error);
+    });
+```
+
+## JSON
+JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It is commonly used for transmitting data between a server and a web application as text. JSON represents data as key-value pairs, arrays, and nested objects.
+
+### Example:
+```javascript
+const jsonData = {
+    name: 'John Doe',
+    age: 30,
+    email: 'john@example.com',
+    address: {
+        street: '123 Main St',
+        city: 'Anytown',
+        country: 'USA'
+    }
+};
+```
+
+### Example of sending JSON in a request:
+```javascript
+fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(jsonData)
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data created:', data);
+    })
+    .catch(error => {
+        console.error('Error creating data:', error);
+    });
+```
+
+## JSON.parse() and JSON.stringify()
+`JSON.parse()` is a method that converts a JSON string into a JavaScript object. It is commonly used when receiving JSON data from a server, allowing you to work with the data in your JavaScript code.
+
+`JSON.stringify()` is a method that converts a JavaScript object into a JSON string. It is commonly used when sending data to a server, allowing you to transmit the data in a format that can be easily parsed by the server.
+
+### Example of JSON.parse():
+```javascript
+const jsonString = '{"name":"John Doe","age":30,"email":"john@example.com"}';
+const jsonObject = JSON.parse(jsonString);
+console.log(jsonObject.name); // Output: John Doe
+```
+
+### Example of JSON.stringify():
+```javascript
+const jsonObject = {
+    name: 'John Doe',
+    age: 30,
+    email: 'john@example.com'
+};
+const jsonString = JSON.stringify(jsonObject);
+console.log(jsonString); // Output: {"name":"John Doe","age":30,"email":"john@example.com"}
+```
+
+## HTTP status codes
+HTTP status codes are standardized codes returned by a server in response to an HTTP request. They indicate the outcome of the request and provide information about the success or failure of the operation. Status codes are grouped into five categories based on their first digit:
+- **1xx (Informational)**: The request was received, and the server is continuing to process it.
+- **2xx (Success)**: The request was successfully received, understood, and accepted.
+- **3xx (Redirection)**: Further action is needed to complete the request, such as following a redirect.
+- **4xx (Client Error)**: The request contains bad syntax or cannot be fulfilled by the server, indicating an error on the client's side.
+- **5xx (Server Error)**: The server failed to fulfill a valid request, indicating an error on the server's side.
+
+### Example of common HTTP status codes:
+- **200 OK**: The request was successful, and the server returned the requested data.
+- **201 Created**: The request was successful, and a new resource was created.
+- **400 Bad Request**: The server could not understand the request due to invalid syntax.
+- **401 Unauthorized**: The client must authenticate itself to get the requested response.
+- **403 Forbidden**: The client does not have access rights to the content.
+- **404 Not Found**: The server could not find the requested resource.
+- **500 Internal Server Error**: The server encountered an unexpected condition that prevented it from fulfilling the request.
+
+## API error handling
+API error handling is the process of managing and responding to errors that occur when interacting with an API. Proper error handling ensures that your application can gracefully handle unexpected situations, provide meaningful feedback to users, and maintain stability. When working with APIs, it is important to check the response status codes and handle errors appropriately.
+
+### Example of API error handling:
+```javascript
+fetch('https://api.example.com/data')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data received:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+```
+
+## REST APIs
+REST (Representational State Transfer) APIs are a set of architectural principles for designing networked applications. RESTful APIs use standard HTTP methods (GET, POST, PUT, PATCH, DELETE) to perform operations on resources, which are identified by unique URLs. REST APIs are stateless, meaning that each request from a client to the server must contain all the information needed to understand and process the request.
+
+### Example of a REST API request:
+```javascript
+fetch('https://api.example.com/users/1', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('User data:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+```
+
+## Query parameters
+Query parameters are key-value pairs appended to the end of a URL to provide additional information or filter the data being requested. They are typically used in GET requests to specify criteria for retrieving resources. Query parameters are added to the URL after a question mark (`?`) and are separated by ampersands (`&`).
+
+### Example:
+```javascript
+fetch('https://api.example.com/data?category=books&sort=asc')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Filtered data:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+```
+
+## URL parameters
+URL parameters, also known as path parameters, are dynamic values embedded within the URL path that are used to identify specific resources. They are typically used in RESTful APIs to specify which resource to retrieve, update, or delete. URL parameters are defined in the route and can be accessed in the server-side code.
+
+### Example:
+```javascript
+fetch('https://api.example.com/users/123')
+    .then(response => response.json())
+    .then(data => {
+        console.log('User data:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+```
+
+## Authentication concepts
+Authentication is the process of verifying the identity of a user or system before granting access to resources or services. In the context of APIs, authentication ensures that only authorized users can access certain endpoints or perform specific actions. Common authentication methods include API keys, OAuth tokens, and JSON Web Tokens (JWT).
+
+### Example of API key authentication:
+```javascript
+fetch('https://api.example.com/data', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer your-api-key'
+    }
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data received:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+```
+
+## CORS basics
+CORS (Cross-Origin Resource Sharing) is a security feature implemented by web browsers that restricts web pages from making requests to a different domain than the one that served the web page. CORS is used to prevent malicious websites from accessing sensitive data on other domains. When a web page makes a cross-origin request, the server must include specific headers in its response to indicate that the request is allowed.
+
+### Example of CORS headers:
+```http
+Access-Control-Allow-Origin: https://example.com
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+Access-Control-Allow-Headers: Content-Type, Authorization
+```
+
+## CORS error handling
+When a web page makes a cross-origin request and the server does not include the appropriate CORS headers in its response, the browser will block the request and throw a CORS error. To handle CORS errors, you can either configure the server to allow requests from specific origins or use a proxy server to make the request on behalf of the client.
+
+### Example of handling CORS errors:
+```javascript
+fetch('https://api.example.com/data')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data received:', data);
+    })
+    .catch(error => {
+        if (error.message.includes('CORS')) {
+            console.error('CORS error: Please check server configuration.');
+        } else {
+            console.error('Error fetching data:', error);
+        }
+    });
+```
+
+## REST APIs vs RESTful APIs
+REST APIs and RESTful APIs are often used interchangeably, but there is a subtle difference between the two terms. A REST API is an application programming interface that adheres to the principles of REST architecture, while a RESTful API is a specific implementation of a REST API that follows the constraints and conventions of REST. In practice, both terms refer to APIs that use HTTP methods and are designed around resources.
+
+### Example of a RESTful API request:
+```javascript
+fetch('https://api.example.com/users/1', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('User data:', data);
+    })
+    .catch(error => {
+        console.error('Error fetching user data:', error);
+    });
+```
+
+### Example of a REST API request:
+```javascript
+fetch('https://api.example.com/users', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'John Doe', email: 'john@example.com' })
+})
+    .then(response => response.json())
+    .then(data => {
+        console.log('User created:', data);
+    })
+    .catch(error => {
+        console.error('Error creating user:', error);
+    });
+```
+
+## AbortController
+The `AbortController` is a web API that allows you to abort or cancel ongoing asynchronous operations, such as fetch requests. It provides a way to create a signal that can be passed to the operation, and when the signal is triggered, the operation is aborted. This is particularly useful for managing long-running requests or when the user navigates away from a page.
+
+### Example:
+```javascript
+const controller = new AbortController();
+const signal = controller.signal;
+fetch('https://api.example.com/data', { signal })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data fetched:', data);
+    })
+    .catch(error => {
+        if (error.name === 'AbortError') {
+            console.log('Fetch aborted');
+        } else {
+            console.error('Error fetching data:', error);
+        }
+    });
+
+// Cancel the fetch request after 1 second
+setTimeout(() => {
+    controller.abort();
+}, 1000);
+```
+
+# Error Handling
+
+## Syntax errors
+Syntax errors occur when the code violates the rules of the programming language, making it impossible for the interpreter or compiler to parse the code. These errors are usually detected at compile-time or when the code is executed, and they prevent the program from running. Common causes of syntax errors include missing parentheses, brackets, or semicolons, as well as incorrect use of keywords or operators.
+
+### Example of a syntax error:
+```javascript
+function sayHello() {
+    console.log("Hello, world!" // Missing closing parenthesis
+}
+```
+
+## Runtime errors
+Runtime errors occur while the program is running and are typically caused by unexpected conditions or invalid operations.
+
+### Example of a runtime error:
+```javascript
+function divide(a, b) {
+    return a / b;
+}
+
+console.log(divide(10, 0)); // This will result in Infinity, but if you try to access a property of undefined, it will throw a runtime error
+```
+
+## Logical errors
+Logical errors occur when the program runs without crashing, but it produces incorrect or unintended results due to a flaw in the logic of the code. These errors can be difficult to detect because they do not generate error messages, and they often require careful debugging and testing to identify and fix.
+
+### Example of a logical error:
+```javascript
+function calculateArea(length, width) {
+    return length + width; // Incorrect logic, should be length * width
+}
+
+console.log(calculateArea(5, 10)); // Output: 15 (incorrect), should be 50
+```
+
+## try...catch finally
+The `try...catch` statement is used to handle exceptions in JavaScript. It allows you to write code that may throw an error in the `try` block, and if an error occurs, the control is transferred to the `catch` block where you can handle the error gracefully. The `finally` block, if present, will execute after the `try` and `catch` blocks, regardless of whether an error occurred or not. This is useful for cleaning up resources or performing actions that should always run.
+
+### Example:
+```javascript
+function divide(a, b) {
+    try {
+        if (b === 0) {
+            throw new Error('Division by zero is not allowed');
+        }
+        return a / b;
+    } catch (error) {
+        console.error('Error:', error.message);
+    } finally {
+        console.log('Execution completed');
+    }
+}
+
+console.log(divide(10, 2)); // Output: 5
+console.log(divide(10, 0)); // Output: Error: Division by zero is not allowed
+console.log(divide(10, 5)); // Output: 2
+```
+
+## throw statement
+The `throw` statement is used to create a custom error in JavaScript. When a `throw` statement is executed, it generates an exception that can be caught by a `try...catch` block. This allows developers to handle specific error conditions in their code and provide meaningful error messages or take corrective actions.
+
+### Example:
+```javascript
+function validateAge(age) {
+    if (age < 0) {
+        throw new Error('Age cannot be negative');
+    } else if (age < 18) {
+        throw new Error('You must be at least 18 years old');
+    }
+    return 'Age is valid';
+}
+try {
+    console.log(validateAge(25)); // Output: Age is valid
+    console.log(validateAge(-5)); // This will throw an error
+} catch (error) {
+    console.error('Error:', error.message); // Output: Error: Age cannot be negative
+}
+```
+
+## Custom errors
+Custom errors in JavaScript allow developers to create their own error types by extending the built-in `Error` class. This enables you to define specific error conditions and provide more meaningful error messages, making it easier to identify and handle different types of errors in your code.
+
+### Example:
+```javascript
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'ValidationError';
+    }
+}
+
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        throw new ValidationError('Invalid email format');
+    }
+    return 'Email is valid';
+}
+
+try {
+    console.log(validateEmail('john@example.com')); // Output: Email is valid
+    console.log(validateEmail('invalid-email')); // This will throw a ValidationError
+} catch (error) {
+    if (error instanceof ValidationError) {
+        console.error('Validation Error:', error.message); // Output: Validation Error: Invalid email format
+    } else {
+        console.error('Error:', error.message);
+    }
+}
+```
+
+## Error & TypeError
+The `Error` object is the base class for all error types in JavaScript. It represents a generic error that can occur during the execution of a program. The `TypeError` is a specific type of error that occurs when an operation is performed on a value of an unexpected type. For example, trying to call a non-function value or accessing a property of `undefined` will result in a `TypeError`.
+
+### Example of Error:
+```javascript
+function divide(a, b) {
+    if (b === 0) {
+        throw new Error('Division by zero is not allowed');
+    }
+    return a / b;
+}
+```
+
+
+### Example of TypeError:
+```javascript
+function callFunction(fn) {
+    if (typeof fn !== 'function') {
+        throw new TypeError('Expected a function');
+    }
+    return fn();
+}
+
+try {
+    console.log(divide(10, 2)); // Output: 5
+    console.log(divide(10, 0)); // This will throw an Error
+} catch (error) {
+    console.error('Error:', error.message); // Output: Error: Division by zero is not allowed
+}
+
+try {
+    console.log(callFunction(() => 'Hello')); // Output: Hello
+    console.log(callFunction(123)); // This will throw a TypeError
+} catch (error) {
+    console.error('TypeError:', error.message); // Output: TypeError: Expected a function
+}
+```
+
+## ReferenceError
+A `ReferenceError` occurs in JavaScript when you try to access a variable that has not been declared or is out of scope. This type of error indicates that the code is referencing a variable that does not exist in the current context, leading to a runtime error.
+
+### Example:
+```javascript
+try {
+    console.log(nonExistentVariable); // This will throw a ReferenceError
+} catch (error) {
+    if (error instanceof ReferenceError) {
+        console.error('ReferenceError:', error.message); // Output: ReferenceError: nonExistentVariable is not defined
+    } else {
+        console.error('Error:', error.message);
+    }
+}
+```
+
+## RangeError
+A `RangeError` occurs in JavaScript when a value is not within the set or range of allowed values. This type of error typically arises when working with numbers, arrays, or other data structures that have specific constraints. For example, trying to create an array with a negative length or passing an invalid argument to a function can result in a `RangeError`.
+
+### Example:
+```javascript
+function createArray(length) {
+    if (length < 0) {
+        throw new RangeError('Array length must be a non-negative integer');
+    }
+    return new Array(length);
+}
+
+try {
+    console.log(createArray(5)); // Output: [ <5 empty items> ]
+    console.log(createArray(-3)); // This will throw a RangeError
+} catch (error) {
+    if (error instanceof RangeError) {
+        console.error('RangeError:', error.message); // Output: RangeError: Array length must be a non-negative integer
+    } else {
+        console.error('Error:', error.message);
+    }
+}
+```
+
+## Handling asynchronous errors
+Handling asynchronous errors in JavaScript can be done using `try...catch` blocks in conjunction with `async/await`, or by using the `.catch()` method on Promises. When working with asynchronous code, it is important to ensure that errors are properly caught and handled to prevent unhandled promise rejections and maintain application stability.
+
+### Example using async/await:
+```javascript
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Data received:', data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+fetchData();
+```
+
+### Example using Promises:
+```javascript
+function fetchData() {
+    fetch('https://api.example.com/data')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data received:', data);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+fetchData();
+```
+
+## Defensive programming
+Defensive programming is a software development approach that emphasizes writing code that anticipates and handles potential errors, unexpected inputs, and edge cases. The goal is to create robust and reliable applications that can gracefully handle failures and maintain functionality even in adverse conditions. Defensive programming techniques include input validation, error handling, using assertions, and implementing fail-safe mechanisms.
+
+### Example of defensive programming:
+```javascript
+function divide(a, b) {
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new TypeError('Both arguments must be numbers');
+    }
+    if (b === 0) {
+        throw new Error('Division by zero is not allowed');
+    }
+    return a / b;
+}
+
+try {
+    console.log(divide(10, 2)); // Output: 5
+    console.log(divide(10, 0)); // This will throw an Error
+    console.log(divide(10, 'a')); // This will throw a TypeError
+} catch (error) {
+    console.error('Error:', error.message);
+}
+```
+
+
