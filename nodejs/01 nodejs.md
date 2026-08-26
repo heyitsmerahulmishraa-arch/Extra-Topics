@@ -1616,3 +1616,160 @@ timers.setTimeout(() => {
   console.log('Interval cleared after 5 seconds.');
 }, 5000);
 ```
+
+## `tty`
+The `tty` module in Node.js is a built-in module that provides an interface for working with terminal devices (TTYs). It allows developers to interact with the terminal, control input and output behavior, and manage terminal settings. The `tty` module is useful for building command-line applications, handling user input, and customizing terminal behavior.
+
+### Example of using the `tty` module in Node.js:
+```javascript
+const tty = require('tty');
+
+// Checking if the current process is running in a TTY
+if (tty.isatty(process.stdout.fd)) {
+  console.log('The current process is running in a TTY.');
+} else {
+  console.log('The current process is not running in a TTY.');
+}
+
+// Creating a TTY ReadStream for reading input from the terminal
+const input = new tty.ReadStream(process.stdin.fd);
+
+// Listening for data events from the TTY ReadStream
+input.on('data', (chunk) => {
+  console.log(`Received input: ${chunk.toString()}`);
+});
+
+// Closing the TTY ReadStream after 5 seconds
+setTimeout(() => {
+  input.close();
+  console.log('TTY ReadStream closed.');
+}, 5000);
+```
+
+## `console`
+The `console` module in Node.js is a built-in module that provides a simple debugging console for logging information, warnings, and errors to the standard output (stdout) and standard error (stderr) streams. It allows developers to print messages, inspect objects, and track the flow of their applications during development and debugging. The `console` module includes various methods for logging, such as `console.log()`, `console.error()`, `console.warn()`, and more.
+
+### Example of using the `console` module in Node.js:
+```javascript
+const console = require('console');
+
+// Logging a message to the standard output
+console.log('Hello, Node.js console module!');
+
+// Logging an error message to the standard error
+console.error('This is an error message.');
+
+// Logging a warning message
+console.warn('This is a warning message.');
+
+// Inspecting an object using console.dir()
+const obj = { name: 'Alice', age: 30, city: 'New York' };
+console.dir(obj, { depth: null, colors: true });
+
+// Using console.time() and console.timeEnd() to measure execution time
+console.time('Execution Time');
+
+// Simulating a time-consuming operation
+setTimeout(() => {
+  console.timeEnd('Execution Time'); // Output: Execution Time: <time>ms
+}, 2000);
+```
+
+## `string_decoder`
+The `string_decoder` module in Node.js is a built-in module that provides an API for decoding buffer data into strings while preserving multi-byte character boundaries. It allows developers to handle string data that may be split across multiple buffer chunks, ensuring that characters are decoded correctly without breaking multi-byte sequences. The `string_decoder` module is particularly useful when working with streams and handling text data.
+
+### Example of using the `string_decoder` module in Node.js:
+```javascript
+const { StringDecoder } = require('string_decoder');
+// Creating a StringDecoder instance for UTF-8 encoding
+const decoder = new StringDecoder('utf8');
+
+// Decoding buffer data into strings
+const buffer1 = Buffer.from([0xE2, 0x9C]); // Incomplete multi-byte character
+const buffer2 = Buffer.from([0x94, 0xA2]); // Remaining bytes of the multi-byte character
+
+const decodedString1 = decoder.write(buffer1);
+const decodedString2 = decoder.write(buffer2);
+
+console.log('Decoded String 1:', decodedString1); // Output: Decoded String 1:
+console.log('Decoded String 2:', decodedString2); // Output: Decoded String 2: ✔️
+```
+
+## `perf-hooks`
+The `perf_hooks` module in Node.js is a built-in module that provides an API for measuring the performance of code execution. It allows developers to collect high-resolution timing information, monitor performance metrics, and analyze the execution time of specific code blocks or functions. The `perf_hooks` module is useful for profiling applications, identifying performance bottlenecks, and optimizing code.
+
+### Example of using the `perf_hooks` module in Node.js:
+```javascript
+const { performance, PerformanceObserver } = require('perf_hooks');
+
+// Creating a PerformanceObserver to monitor performance entries
+const obs = new PerformanceObserver((list) => {
+  const entries = list.getEntries();
+  entries.forEach((entry) => {
+    console.log(`${entry.name}: ${entry.duration}ms`);
+  });
+});
+
+obs.observe({ entryTypes: ['measure'] });
+
+// Measuring the execution time of a code block
+performance.mark('start');
+
+// Simulating a time-consuming operation
+setTimeout(() => {
+  performance.mark('end');
+  performance.measure('Time taken for operation', 'start', 'end');
+}, 2000);
+```
+
+## `async_hooks`
+The `async_hooks` module in Node.js is a built-in module that provides an API for tracking asynchronous resources and their lifecycle events. It allows developers to monitor the creation, execution, and destruction of asynchronous operations, such as timers, promises, and I/O operations. The `async_hooks` module is useful for debugging, profiling, and understanding the behavior of asynchronous code in Node.js applications.
+
+### Example of using the `async_hooks` module in Node.js:
+```javascript
+const async_hooks = require('async_hooks');
+
+// Creating an AsyncHook instance to track asynchronous resources
+const asyncHook = async_hooks.createHook({
+  init(asyncId, type, triggerAsyncId, resource) {
+    console.log(`Async resource initialized: ${type} (ID: ${asyncId})`);
+  },
+  before(asyncId) {
+    console.log(`Before async resource execution (ID: ${asyncId})`);
+  },
+  after(asyncId) {
+    console.log(`After async resource execution (ID: ${asyncId})`);
+  },
+  destroy(asyncId) {
+    console.log(`Async resource destroyed (ID: ${asyncId})`);
+  }
+});
+
+// Enabling the AsyncHook
+asyncHook.enable();
+
+// Simulating an asynchronous operation using setTimeout
+setTimeout(() => {
+  console.log('Asynchronous operation completed.');
+}, 1000);
+```
+
+## `diagnostics_channel`
+The `diagnostics_channel` module in Node.js is a built-in module that provides an API for creating and subscribing to diagnostic channels. It allows developers to instrument their applications and collect diagnostic information, such as performance metrics, error events, and custom telemetry data. The `diagnostics_channel` module is useful for monitoring application behavior, debugging issues, and gaining insights into the runtime performance of Node.js applications.
+
+### Example of using the `diagnostics_channel` module in Node.js:
+```javascript
+const diagnostics_channel = require('diagnostics_channel');
+
+// Creating a diagnostic channel
+const channel = diagnostics_channel.channel('my-channel');
+
+// Subscribing to the diagnostic channel
+channel.subscribe((message) => {
+  console.log('Received diagnostic message:', message);
+});
+
+// Publishing a message to the diagnostic channel
+channel.publish({ event: 'test-event', data: 'This is a test message.' });
+```
+
