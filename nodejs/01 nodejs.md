@@ -1773,3 +1773,735 @@ channel.subscribe((message) => {
 channel.publish({ event: 'test-event', data: 'This is a test message.' });
 ```
 
+# File System - `fs`
+
+## Reading 
+
+## fs.readFile()
+The `fs.readFile()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to read the contents of a file asynchronously. It reads the entire contents of a file and returns the data as a buffer or string, depending on the specified encoding. This method is commonly used for reading text files, JSON files, and other types of files in Node.js applications.
+
+### Example of using `fs.readFile()` in Node.js:
+```javascript
+const fs = require('fs');
+
+// Reading a text file asynchronously
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading file:', err);
+    return;
+  }
+  console.log('File contents:', data);
+});
+```
+
+## fs.readFileSync()
+The `fs.readFileSync()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to read the contents of a file synchronously. It reads the entire contents of a file and returns the data as a buffer or string, depending on the specified encoding. This method blocks the execution of subsequent code until the file reading operation is complete, making it suitable for scenarios where synchronous file reading is acceptable.
+
+### Example of using `fs.readFileSync()` in Node.js:
+```javascript
+const fs = require('fs');
+
+// Reading a text file synchronously
+try {
+  const data = fs.readFileSync('example.txt', 'utf8');
+  console.log('File contents:', data);
+} catch (err) {
+  console.error('Error reading file:', err);
+}
+```
+
+## fs.promises.readFile()
+The `fs.promises.readFile()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to read the contents of a file asynchronously using Promises. It reads the entire contents of a file and returns a Promise that resolves with the data as a buffer or string, depending on the specified encoding. This method is useful for working with asynchronous code in a more modern and readable way, especially when using `async/await`.
+
+### Example of using `fs.promises.readFile()` in Node.js:
+```javascript
+const fs = require('fs').promises;
+
+// Reading a text file asynchronously using Promises
+async function readFileAsync() {
+  try {
+    const data = await fs.readFile('example.txt', 'utf8');
+    console.log('File contents:', data);
+  } catch (err) {
+    console.error('Error reading file:', err);
+  }
+}
+
+readFileAsync();
+```
+
+## Reading text files
+
+```javascript
+const fs = require('fs');
+
+// Reading a text file asynchronously
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading file:', err);
+    return;
+  }
+  console.log('File contents:', data);
+});
+```
+
+## Reading JSON
+```javascript
+const fs = require('fs');
+
+// Reading a JSON file asynchronously
+fs.readFile('data.json', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading JSON file:', err);
+    return;
+  }
+  try {
+    const jsonData = JSON.parse(data);
+    console.log('JSON Data:', jsonData);
+  } catch (parseErr) {
+    console.error('Error parsing JSON:', parseErr);
+  }
+});
+```
+
+## Encoding
+
+```javascript
+const fs = require('fs');
+
+// Reading a file with a specific encoding (e.g., 'utf8')
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading file:', err);
+    return;
+  }
+  console.log('File contents with UTF-8 encoding:', data);
+});
+```
+
+## Writing
+
+## fs.writeFile()
+The `fs.writeFile()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to write data to a file asynchronously. It creates a new file if it does not exist or overwrites the existing file with the specified data. This method is commonly used for writing text files, JSON files, and other types of files in Node.js applications.
+
+### Example of using `fs.writeFile()` in Node.js:
+```javascript
+const fs = require('fs');
+
+// Writing data to a text file asynchronously
+const dataToWrite = 'Hello, Node.js fs.writeFile() method!';
+fs.writeFile('output.txt', dataToWrite, 'utf8', (err) => {
+  if (err) {
+    console.error('Error writing to file:', err);
+    return;
+  }
+  console.log('Data written to file successfully.');
+});
+```
+
+## fs.writeFileSync()
+The `fs.writeFileSync()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to write data to a file synchronously. It creates a new file if it does not exist or overwrites the existing file with the specified data. This method blocks the execution of subsequent code until the file writing operation is complete, making it suitable for scenarios where synchronous file writing is acceptable.
+
+### Example of using `fs.writeFileSync()` in Node.js:
+```javascript
+const fs = require('fs');
+// Writing data to a text file synchronously
+const dataToWrite = 'Hello, Node.js fs.writeFileSync() method!';
+try {
+  fs.writeFileSync('output.txt', dataToWrite, 'utf8');
+  console.log('Data written to file successfully.');
+} catch (err) {
+  console.error('Error writing to file:', err);
+}
+```
+
+## fs.promises.writeFile()
+The `fs.promises.writeFile()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to write data to a file asynchronously using Promises. It creates a new file if it does not exist or overwrites the existing file with the specified data. This method is useful for working with asynchronous code in a more modern and readable way, especially when using `async/await`.
+
+### Example of using `fs.promises.writeFile()` in Node.js:
+```javascript
+const fs = require('fs').promises;
+// Writing data to a text file asynchronously using Promises
+async function writeFileAsync() {
+  const dataToWrite = 'Hello, Node.js fs.promises.writeFile() method!';
+  try {
+    await fs.writeFile('output.txt', dataToWrite, 'utf8');
+    console.log('Data written to file successfully.');
+  } catch (err) {
+    console.error('Error writing to file:', err);
+  }
+}
+
+writeFileAsync();
+```
+
+## Append files
+
+```javascript
+const fs = require('fs');
+
+// Appending data to a text file asynchronously
+const dataToAppend = '\nThis is additional data being appended to the file.';
+
+fs.appendFile('output.txt', dataToAppend, 'utf8', (err) => {
+  if (err) {
+    console.error('Error appending to file:', err);
+    return;
+  }
+  console.log('Data appended to file successfully.');
+});
+```
+
+## File flags
+
+```javascript
+const fs = require('fs');
+
+// Writing data to a file with specific flags (e.g., 'a' for append)
+const dataToWrite = 'This data will be appended to the file.';
+
+fs.writeFile('output.txt', dataToWrite, { flag: 'a', encoding: 'utf8' }, (err) => {
+  if (err) {
+    console.error('Error writing to file with append flag:', err);
+    return;
+  }
+  console.log('Data written to file with append flag successfully.');
+});
+```
+
+## File descriptors
+
+```javascript
+const fs = require('fs');
+
+// Opening a file and obtaining its file descriptor
+fs.open('output.txt', 'r+', (err, fd) => {
+  if (err) {
+    console.error('Error opening file:', err);
+    return;
+  }
+  console.log('File descriptor obtained:', fd);
+
+  // Writing data to the file using the file descriptor
+  const dataToWrite = 'Writing data using file descriptor.';
+  fs.write(fd, dataToWrite, (writeErr) => {
+    if (writeErr) {
+      console.error('Error writing to file using file descriptor:', writeErr);
+      return;
+    }
+    console.log('Data written to file using file descriptor successfully.');
+
+    // Closing the file descriptor
+    fs.close(fd, (closeErr) => {
+      if (closeErr) {
+        console.error('Error closing file descriptor:', closeErr);
+        return;
+      }
+      console.log('File descriptor closed successfully.');
+    });
+  });
+});
+```
+
+## File watching
+
+```javascript
+const fs = require('fs');
+
+// Watching a file for changes
+fs.watch('output.txt', (eventType, filename) => {
+  if (filename) {
+    console.log(`File ${filename} has been ${eventType}.`);
+  } else {
+    console.log('Filename not provided.');
+  }
+});
+```
+
+## Directories
+
+## mkdir()
+The `fs.mkdir()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to create a new directory asynchronously. It creates a new directory at the specified path and can also create parent directories if they do not exist, depending on the options provided. This method is commonly used for organizing files and creating folder structures in Node.js applications.
+
+### Example of using `fs.mkdir()` in Node.js:
+```javascript
+const fs = require('fs');
+// Creating a new directory asynchronously
+fs.mkdir('new_directory', { recursive: true }, (err) => {
+  if (err) {
+    console.error('Error creating directory:', err);
+    return;
+  }
+  console.log('Directory created successfully.');
+});
+```
+
+## readdir()
+The `fs.readdir()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to read the contents of a directory asynchronously. It returns an array of file and directory names present in the specified directory. This method is commonly used for listing files, navigating directory structures, and performing operations on multiple files in Node.js applications.
+
+### Example of using `fs.readdir()` in Node.js:
+```javascript
+const fs = require('fs');
+
+// Reading the contents of a directory asynchronously
+fs.readdir('new_directory', (err, files) => {
+  if (err) {
+    console.error('Error reading directory:', err);
+    return;
+  }
+  console.log('Directory contents:', files);
+});
+```
+
+## rmdir()
+The `fs.rmdir()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to remove a directory asynchronously. It deletes the specified directory, and if the directory is not empty, it will throw an error unless the `recursive` option is set to `true`. This method is commonly used for cleaning up directories and managing folder structures in Node.js applications.
+
+### Example of using `fs.rmdir()` in Node.js:
+```javascript
+const fs = require('fs');
+// Removing a directory asynchronously
+
+fs.rmdir('new_directory', { recursive: true }, (err) => {
+  if (err) {
+    console.error('Error removing directory:', err);
+    return;
+  }
+  console.log('Directory removed successfully.');
+});
+```
+
+## rm()
+The `fs.rm()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to remove files or directories asynchronously. It can delete a specified file or directory, and if the target is a directory, it can also remove it recursively if the `recursive` option is set to `true`. This method is commonly used for file and directory cleanup operations in Node.js applications.
+
+### Example of using `fs.rm()` in Node.js:
+```javascript
+const fs = require('fs');
+// Removing a file asynchronously
+
+fs.rm('output.txt', (err) => {
+  if (err) {
+    console.error('Error removing file:', err);
+    return;
+  }
+  console.log('File removed successfully.');
+});
+```
+
+## Recursive directories
+
+```javascript
+const fs = require('fs');
+
+// Creating a nested directory structure recursively
+fs.mkdir('parent_directory/child_directory/grandchild_directory', { recursive: true }, (err) => {
+  if (err) {
+    console.error('Error creating nested directories:', err);
+    return;
+  }
+  console.log('Nested directories created successfully.');
+});
+```
+
+## File Operations
+
+## rename()
+The `fs.rename()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to rename or move a file or directory asynchronously. It changes the name of the specified file or directory to a new name or moves it to a new location. This method is commonly used for organizing files, renaming files, and managing directory structures in Node.js applications.
+
+### Example of using `fs.rename()` in Node.js:
+```javascript
+const fs = require('fs');
+// Renaming a file asynchronously
+
+fs.rename('output.txt', 'renamed_output.txt', (err) => {
+  if (err) {
+    console.error('Error renaming file:', err);
+    return;
+  }
+  console.log('File renamed successfully.');
+});
+```
+
+## copyFile()
+The `fs.copyFile()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to copy a file from one location to another asynchronously. It creates a new file at the destination path with the same contents as the source file. This method is commonly used for duplicating files, creating backups, and managing file operations in Node.js applications.
+
+### Example of using `fs.copyFile()` in Node.js:
+```javascript
+const fs = require('fs');
+// Copying a file asynchronously
+
+fs.copyFile('renamed_output.txt', 'copied_output.txt', (err) => {
+  if (err) {
+    console.error('Error copying file:', err);
+    return;
+  }
+  console.log('File copied successfully.');
+});
+```
+
+## unlink()
+The `fs.unlink()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to delete a file asynchronously. It removes the specified file from the file system. This method is commonly used for cleaning up files, managing temporary files, and performing file deletion operations in Node.js applications.
+
+### Example of using `fs.unlink()` in Node.js:
+```javascript
+const fs = require('fs');
+// Deleting a file asynchronously
+
+fs.unlink('copied_output.txt', (err) => {
+  if (err) {
+    console.error('Error deleting file:', err);
+    return;
+  }
+  console.log('File deleted successfully.');
+});
+```
+
+## stat()
+The `fs.stat()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to retrieve information about a file or directory asynchronously. It returns an object containing details such as file size, creation time, modification time, and file type. This method is commonly used for checking file properties, validating file existence, and managing file operations in Node.js applications.
+
+### Example of using `fs.stat()` in Node.js:
+```javascript
+const fs = require('fs');
+// Retrieving file information asynchronously
+
+fs.stat('renamed_output.txt', (err, stats) => {
+  if (err) {
+    console.error('Error retrieving file information:', err);
+    return;
+  }
+  console.log('File Information:');
+  console.log(`Size: ${stats.size} bytes`);
+  console.log(`Created: ${stats.birthtime}`);
+  console.log(`Modified: ${stats.mtime}`);
+  console.log(`Is File: ${stats.isFile()}`);
+  console.log(`Is Directory: ${stats.isDirectory()}`);
+});
+```
+
+## lstat()
+The `fs.lstat()` method in Node.js is a built-in function provided by the `fs` (file system) module that allows developers to retrieve information about a file or symbolic link asynchronously. It returns an object containing details such as file size, creation time, modification time, and file type. Unlike `fs.stat()`, `fs.lstat()` does not follow symbolic links, making it useful for checking the properties of symbolic links themselves.
+
+### Example of using `fs.lstat()` in Node.js:
+```javascript
+const fs = require('fs');
+// Retrieving file or symbolic link information asynchronously
+
+fs.lstat('symbolic_link', (err, stats) => {
+  if (err) {
+    console.error('Error retrieving file or symbolic link information:', err);
+    return;
+  }
+  console.log('File or Symbolic Link Information:');
+  console.log(`Size: ${stats.size} bytes`);
+  console.log(`Created: ${stats.birthtime}`);
+  console.log(`Modified: ${stats.mtime}`);
+  console.log(`Is File: ${stats.isFile()}`);
+  console.log(`Is Directory: ${stats.isDirectory()}`);
+  console.log(`Is Symbolic Link: ${stats.isSymbolicLink()}`);
+});
+```
+
+## File permissions
+
+```javascript
+const fs = require('fs');
+// Changing file permissions asynchronously
+fs.chmod('renamed_output.txt', 0o644, (err) => {
+  if (err) {
+    console.error('Error changing file permissions:', err);
+    return;
+  }
+  console.log('File permissions changed successfully.');
+});
+```
+
+## File Descriptors
+
+```javascript
+const fs = require('fs');
+// Opening a file and obtaining its file descriptor
+
+fs.open('renamed_output.txt', 'r+', (err, fd) => {
+  if (err) {
+    console.error('Error opening file:', err);
+    return;
+  }
+  console.log('File descriptor obtained:', fd);
+
+  // Writing data to the file using the file descriptor
+  const dataToWrite = 'Writing data using file descriptor.';
+  fs.write(fd, dataToWrite, (writeErr) => {
+    if (writeErr) {
+      console.error('Error writing to file using file descriptor:', writeErr);
+      return;
+    }
+    console.log('Data written to file using file descriptor successfully.');
+
+    // Closing the file descriptor
+    fs.close(fd, (closeErr) => {
+      if (closeErr) {
+        console.error('Error closing file descriptor:', closeErr);
+        return;
+      }
+      console.log('File descriptor closed successfully.');
+    });
+  });
+});
+```
+
+## Symbolic links
+
+```javascript
+const fs = require('fs');
+// Creating a symbolic link asynchronously
+
+fs.symlink('renamed_output.txt', 'symbolic_link', (err) => {
+  if (err) {
+    console.error('Error creating symbolic link:', err);
+    return;
+  }
+  console.log('Symbolic link created successfully.');
+});
+```
+
+## Watching files
+
+```javascript
+const fs = require('fs');
+// Watching a file for changes
+
+fs.watch('renamed_output.txt', (eventType, filename) => {
+  if (filename) {
+    console.log(`File ${filename} has been ${eventType}.`);
+  } else {
+    console.log('Filename not provided.');
+  }
+});
+```
+
+## Async File Operations
+
+## Callback APIs
+
+```javascript
+const fs = require('fs');
+
+// Reading a file asynchronously using callback API
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading file:', err);
+    return;
+  }
+  console.log('File contents:', data);
+});
+```
+
+## Promise APIs
+
+```javascript
+const fs = require('fs').promises;
+
+// Reading a file asynchronously using Promise API
+async function readFileAsync() {
+  try {
+    const data = await fs.readFile('example.txt', 'utf8');
+    console.log('File contents:', data);
+  } catch (err) {
+    console.error('Error reading file:', err);
+  }
+}
+
+readFileAsync();
+```
+
+## Sync APIs
+
+```javascript
+const fs = require('fs');
+// Reading a file synchronously using Sync API
+
+try {
+  const data = fs.readFileSync('example.txt', 'utf8');
+  console.log('File contents:', data);
+} catch (err) {
+  console.error('Error reading file:', err);
+}
+```
+
+## When sync APIs are dangerous
+
+```javascript
+const fs = require('fs');
+// Reading a file synchronously in a blocking manner
+
+try {
+  const data = fs.readFileSync('example.txt', 'utf8');
+  console.log('File contents:', data);
+} catch (err) {
+  console.error('Error reading file:', err);
+}
+
+// Performing other operations while the file is being read synchronously
+console.log('This message will be logged after the file reading operation is complete.');
+```
+
+## Path Module
+
+## path.join()
+The `path.join()` method in Node.js is a built-in function provided by the `path` module that allows developers to join multiple path segments into a single normalized path. It takes care of handling platform-specific path separators and ensures that the resulting path is valid. This method is commonly used for constructing file and directory paths in Node.js applications.
+
+### Example of using `path.join()` in Node.js:
+```javascript
+const path = require('path');
+// Joining multiple path segments into a single normalized path
+
+const joinedPath = path.join('folder1', 'folder2', 'file.txt');
+console.log('Joined Path:', joinedPath); // Output: Joined Path: folder1/folder2/file.txt (on Unix-based systems) or folder1\folder2\file.txt (on Windows)
+```
+
+## path.resolve()
+The `path.resolve()` method in Node.js is a built-in function provided by the `path` module that allows developers to resolve a sequence of path segments into an absolute path. It processes the given path segments from right to left, resolving them against the current working directory or a specified base path. This method is commonly used for obtaining absolute paths in Node.js applications.
+
+### Example of using `path.resolve()` in Node.js:
+```javascript
+const path = require('path');
+// Resolving a sequence of path segments into an absolute path
+
+const absolutePath = path.resolve('folder1', 'folder2', 'file.txt');
+console.log('Absolute Path:', absolutePath); // Output: Absolute Path: /current/working/directory/folder1/folder2/file.txt (on Unix-based systems) or C:\current\working\directory\folder1\folder2\file.txt (on Windows)
+```
+
+## path.basename()
+The `path.basename()` method in Node.js is a built-in function provided by the `path` module that allows developers to extract the last portion of a path, typically the file name or directory name. It takes a path string as input and returns the base name of the path, optionally removing a specified file extension. This method is commonly used for extracting file names from paths in Node.js applications.
+
+### Example of using `path.basename()` in Node.js:
+```javascript
+const path = require('path');
+// Extracting the base name from a path
+const filePath = '/folder1/folder2/file.txt';
+const baseName = path.basename(filePath);
+console.log('Base Name:', baseName); // Output: Base Name: file.txt
+// Extracting the base name without the file extension
+const baseNameWithoutExt = path.basename(filePath, '.txt');
+console.log('Base Name without Extension:', baseNameWithoutExt); // Output: Base Name without Extension: file
+```
+
+## path.dirname()
+The `path.dirname()` method in Node.js is a built-in function provided by the `path` module that allows developers to extract the directory name from a given path. It takes a path string as input and returns the directory portion of the path, excluding the file name or last segment. This method is commonly used for obtaining the parent directory of a file or directory in Node.js applications.
+
+### Example of using `path.dirname()` in Node.js:
+```javascript
+const path = require('path');
+// Extracting the directory name from a path
+
+const filePath = '/folder1/folder2/file.txt';
+const dirName = path.dirname(filePath);
+
+console.log('Directory Name:', dirName); // Output: Directory Name: /folder1/folder2
+```
+
+## path.extname()
+The `path.extname()` method in Node.js is a built-in function provided by the `path` module that allows developers to extract the file extension from a given path. It takes a path string as input and returns the portion of the path that follows the last period (.) character, including the period itself. If the path does not have an extension, it returns an empty string. This method is commonly used for determining the file type based on its extension in Node.js applications.
+
+### Example of using `path.extname()` in Node.js:
+```javascript
+const path = require('path');
+// Extracting the file extension from a path
+const filePath = '/folder1/folder2/file.txt';
+const fileExtension = path.extname(filePath);
+console.log('File Extension:', fileExtension); // Output: File Extension: .txt
+```
+
+## path.parse()
+The `path.parse()` method in Node.js is a built-in function provided by the `path` module that allows developers to parse a given path into its constituent components. It takes a path string as input and returns an object containing properties such as `root`, `dir`, `base`, `ext`, and `name`. This method is commonly used for analyzing and manipulating file paths in Node.js applications.
+
+### Example of using `path.parse()` in Node.js:
+```javascript
+const path = require('path');
+// Parsing a path into its components
+const filePath = '/folder1/folder2/file.txt';
+const parsedPath = path.parse(filePath);
+console.log('Parsed Path:', parsedPath);
+// Output: Parsed Path: { root: '/', dir: '/folder1/folder2', base: 'file.txt', ext: '.txt', name: 'file' }
+```
+
+## path.format()
+The `path.format()` method in Node.js is a built-in function provided by the `path` module that allows developers to construct a path string from an object containing path components. It takes an object with properties such as `root`, `dir`, `base`, `ext`, and `name`, and returns a formatted path string. This method is commonly used for creating file paths dynamically in Node.js applications.
+
+### Example of using `path.format()` in Node.js:
+```javascript
+const path = require('path');
+// Constructing a path string from an object containing path components
+
+const pathObject = {
+  root: '/',
+  dir: '/folder1/folder2',
+  base: 'file.txt',
+  ext: '.txt',
+  name: 'file'
+};
+
+const formattedPath = path.format(pathObject);
+console.log('Formatted Path:', formattedPath); // Output: Formatted Path: /folder1/folder2/file.txt
+```
+
+## path.normalize()
+The `path.normalize()` method in Node.js is a built-in function provided by the `path` module that allows developers to normalize a given path string. It resolves any redundant or unnecessary path segments, such as `.` (current directory) and `..` (parent directory), and returns a standardized path. This method is commonly used for cleaning up and standardizing file paths in Node.js applications.
+
+### Example of using `path.normalize()` in Node.js:
+```javascript
+const path = require('path');
+// Normalizing a path string
+
+const unnormalizedPath = '/folder1/./folder2/../folder3/file.txt';
+const normalizedPath = path.normalize(unnormalizedPath);
+console.log('Normalized Path:', normalizedPath); // Output: Normalized Path: /folder1/folder3/file.txt
+```
+
+## path.relative()
+The `path.relative()` method in Node.js is a built-in function provided by the `path` module that allows developers to calculate the relative path from one directory to another. It takes two path strings as input and returns a relative path that can be used to navigate from the first path to the second. This method is commonly used for determining the relative location of files and directories in Node.js applications.
+
+### Example of using `path.relative()` in Node.js:
+```javascript
+const path = require('path');
+// Calculating the relative path from one directory to another
+
+const fromPath = '/folder1/folder2';
+const toPath = '/folder1/folder3/file.txt';
+const relativePath = path.relative(fromPath, toPath);
+console.log('Relative Path:', relativePath); // Output: Relative Path: ../folder3/file.txt
+```
+
+## path.isAbsolute()
+The `path.isAbsolute()` method in Node.js is a built-in function provided by the `path` module that allows developers to determine whether a given path string is an absolute path. It takes a path string as input and returns a boolean value: `true` if the path is absolute, and `false` if it is relative. This method is commonly used for validating and handling file paths in Node.js applications.
+
+### Example of using `path.isAbsolute()` in Node.js:
+```javascript
+const path = require('path');
+// Checking if a path is absolute
+const absolutePath = '/folder1/folder2/file.txt';
+const relativePath = 'folder1/folder2/file.txt';
+
+console.log('Is Absolute Path:', path.isAbsolute(absolutePath)); // Output: Is Absolute Path: true
+console.log('Is Relative Path:', path.isAbsolute(relativePath)); // Output: Is Relative Path: false
+```
+
+## Platform-specific paths
+
+```javascript
+const path = require('path');
+// Getting platform-specific path separators
+const platformSpecificPath = path.join('folder1', 'folder2', 'file.txt');
+
+console.log('Platform-specific Path:', platformSpecificPath); // Output will vary based on the operating system (e.g., folder1/folder2/file.txt on Unix-based systems or folder1\folder2\file.txt on Windows)
+```
+
+## path.sep
+The `path.sep` property in Node.js is a built-in property provided by the `path` module that represents the platform-specific path segment separator. It is a string that indicates the character used to separate path segments in file paths. On Unix-based systems, the separator is a forward slash (`/`), while on Windows, it is a backslash (`\`). This property is useful for constructing and manipulating file paths in a platform-independent manner.
+
+### Example of using `path.sep` in Node.js:
+```javascript
+const path = require('path');
+// Getting the platform-specific path segment separator
+
+console.log('Path Separator:', path.sep); // Output: Path Separator: / (on Unix-based systems) or \ (on Windows)
+```
