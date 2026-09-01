@@ -369,3 +369,451 @@
 - [Defensive programming](./02%20javascript.md#defensive-programming)
 
 </details>
+
+
+# Object-Oriented JavaScript
+
+<details>
+<summary><strong>Object-Oriented JavaScript</strong></summary>
+
+- [Objects vs classes](./03%20javascript.md#objects-vs-classes)
+- [Creating Objects](./03%20javascript.md#creating-objects)
+- [Creating Classes](./03%20javascript.md#creating-classes)
+- [Constructors functions](./03%20javascript.md#constructors-functions)
+- [new Keyword](./03%20javascript.md#new-keyword)
+- [Prototypes](./03%20javascript.md#prototypes)
+- [Prototype Chain](./03%20javascript.md#prototype-chain)
+- [__proto__](./03%20javascript.md#proto)
+- [prototype vs __proto__](./03%20javascript.md#prototype-vs-proto)
+- [Object.getPrototypeOf() and Object.setPrototypeOf()](./03%20javascript.md#objectgetprototypeof-and-objectsetprototypeof)
+- [Classes](./03%20javascript.md#classes)
+- [Constructor](./03%20javascript.md#constructor)
+- [Instance methods](./03%20javascript.md#instance-methods)
+- [Static methods](./03%20javascript.md#static-methods)
+- [static properties](./03%20javascript.md#static-properties)
+- [Getters and Setters](./03%20javascript.md#getters-and-setters)
+- [Private fields](./03%20javascript.md#private-fields)
+- [Public fields](./03%20javascript.md#public-fields)
+- [Inheritance](./03%20javascript.md#inheritance)
+- [extends Keyword](./03%20javascript.md#extends-keyword)
+- [super Keyword](./03%20javascript.md#super-keyword)
+- [Polymorphism](./03%20javascript.md#polymorphism)
+- [Encapsulation](./03%20javascript.md#encapsulation)
+- [Abstraction](./03%20javascript.md#abstraction)
+- [Composition](./03%20javascript.md#composition)
+- [Composition vs Inheritance](./03%20javascript.md#composition-vs-inheritance)
+
+</details>
+
+<details>
+<summary><strong>`this` Keyword</strong></summary>
+
+- [Global `this`](./03%20javascript.md#global-this)
+- [`this` inside functions](./03%20javascript.md#this-inside-functions)
+- [`this` inside methods](./03%20javascript.md#this-inside-methods)
+- [`this` inside arrow functions](./03%20javascript.md#this-inside-arrow-functions)
+- [`this` inside classes](./03%20javascript.md#this-inside-classes)
+- [Constructor `this`](./03%20javascript.md#constructor-this)
+- [call, apply, and bind](./03%20javascript.md#call-apply-and-bind)
+- [Losing `this`](./03%20javascript.md#losing-this)
+- [Explicit Binding](./03%20javascript.md#explicit-binding)
+- [Implicit Binding](./03%20javascript.md#implicit-binding)
+- [New Binding](./03%20javascript.md#new-binding)
+
+</details>
+
+<details>
+<summary><strong>Advanced Functions</strong></summary>
+
+- [Closures](./03%20javascript.md#closures)
+- [Higher-Order Functions](./03%20javascript.md#higher-order-functions)
+- [Currying](./03%20javascript.md#currying)
+- [Partial Application](./03%20javascript.md#partial-application)
+- [Function Composition](./03%20javascript.md#function-composition)
+- [Memoization](./03%20javascript.md#memoization)
+- [IIFE (Immediately Invoked Function Expression)](./03%20javascript.md#iife-immediately-invoked-function-expression)
+- [Callback patterns](./03%20javascript.md#callback-patterns)
+- [Factory functions](./03%20javascript.md#factory-functions)
+- [Function decorators](./03%20javascript.md#function-decorators)
+- [call, apply, and bind](./03%20javascript.md#call-apply-and-bind)
+
+</details>
+
+
+<details>
+<summary><strong>Debouncing & Throttling</strong></summary>
+
+- [What is debouncing?](./03%20javascript.md#what-is-debouncing)
+- [Implement debounce from scratch](./03%20javascript.md#implement-debounce-from-scratch)
+- [Debounce with `setTimeout`](./03%20javascript.md#debounce-with-settimeout)
+- [Debounce API search](./03%20javascript.md#debounce-api-search)
+- [Debounce input events](./03%20javascript.md#debounce-input-events)
+- [Debounce resize events](./03%20javascript.md#debounce-resize-events)
+- [What is throttling?](./03%20javascript.md#what-is-throttling)
+- [Implement throttle from scratch](./03%20javascript.md#implement-throttle-from-scratch)
+- [Throttle scroll events](./03%20javascript.md#throttle-scroll-events)
+- [Throttle mouse events](./03%20javascript.md#throttle-mouse-events)
+- [Debounce vs Throttle](./03%20javascript.md#debounce-vs-throttle)
+- [Leading execution](./03%20javascript.md#leading-execution)
+- [Trailing execution](./03%20javascript.md#trailing-execution)
+- [Cancelable debounce](./03%20javascript.md#cancelable-debounce)
+- [Cancelable throttle](./03%20javascript.md#cancelable-throttle)
+
+</details>
+
+
+<details>
+<summary><strong>Execution Context & JavaScript Internals</strong></summary>
+
+- [Execution Context](./03%20javascript.md#execution-context)
+- [Global Execution Context](./03%20javascript.md#global-execution-context)
+- [Function Execution Context](./03%20javascript.md#function-execution-context)
+- [Creation Phase](./03%20javascript.md#creation-phase)
+- [Execution Phase](./03%20javascript.md#execution-phase)
+- [Lexical Environment](./03%20javascript.md#lexical-environment)
+- [Variable Environment](./03%20javascript.md#variable-environment)
+- [Environment records](./03%20javascript.md#environment-records)
+- [Scope Chain](./03%20javascript.md#scope-chain)
+- [Hoisting](./03%20javascript.md#hoisting)
+- [Function Hoisting](./03%20javascript.md#function-hoisting)
+- [Variable Hoisting](./03%20javascript.md#variable-hoisting)
+- [Temporal Dead Zone (TDZ)](./03%20javascript.md#temporal-dead-zone-tdz)
+- [Call Stack](./03%20javascript.md#call-stack)
+- [Heap Memory](./03%20javascript.md#heap-memory)
+- [Garbage Collection](./03%20javascript.md#garbage-collection)
+- [Memory Management](./03%20javascript.md#memory-management)
+- [Event Loop](./03%20javascript.md#event-loop)
+- [Microtasks and Macrotasks](./03%20javascript.md#microtasks-and-macrotasks)
+- [Call Stack vs Event Loop](./03%20javascript.md#call-stack-vs-event-loop)
+
+</details>
+
+
+<details>
+<summary><strong>Call Stack vs Event Loop</strong></summary>
+
+- [Call Stack](./03%20javascript.md#call-stack)
+- [Web APIs](./03%20javascript.md#web-apis)
+- [Example of Web APIs Event Loop](./03%20javascript.md#example-of-web-apis-event-loop)
+- [Macrotasks and Microtasks](./03%20javascript.md#macrotasks-and-microtasks)
+- [`setTimeout` and `setInterval`](./03%20javascript.md#settimeout-and-setinterval)
+- [Promises and the Event Loop](./03%20javascript.md#promises-and-the-event-loop)
+- [queueMicrotask()](./03%20javascript.md#queuemicrotask)
+- [async/await and the Event Loop](./03%20javascript.md#asyncawait-and-the-event-loop)
+- [Execution Order](./03%20javascript.md#execution-order)
+- [Event loop interview problems](./03%20javascript.md#event-loop-interview-problems)
+
+</details>
+
+<details>
+<summary><strong>Prototypes</strong></summary>
+
+- [Prototype Objects](./03%20javascript.md#prototype-objects)
+- [Prototype inheritance](./03%20javascript.md#prototype-inheritance)
+- [Prototype chain](./03%20javascript.md#prototype-chain)
+- [Constructor prototype](./03%20javascript.md#constructor-prototype)
+- [Instance prototype](./03%20javascript.md#instance-prototype)
+- [prototype](./03%20javascript.md#prototype)
+- [__proto__](./03%20javascript.md#__proto__)
+- [Object.create()](./03%20javascript.md#objectcreate)
+- [Shadowing](./03%20javascript.md#shadowing)
+- [Property lookup](./03%20javascript.md#property-lookup)
+- [Built-in Prototypes](./03%20javascript.md#built-in-prototypes)
+- [Extending Prototypes](./03%20javascript.md#extending-prototypes)
+- [prototype vs class](./03%20javascript.md#prototype-vs-class)
+
+</details>
+
+<details>
+<summary><strong>Iterators & Generators</strong></summary>
+
+- [Iterable](./03%20javascript.md#iterable)
+- [Iterator](./03%20javascript.md#iterator)
+- [Iterator protocol](./03%20javascript.md#iterator-protocol)
+- [`Symbol.iterator`](./03%20javascript.md#symboliterator)
+- [`next()`](./03%20javascript.md#next)
+- [Generator fuctions](./03%20javascript.md#generator-fuctions)
+- [`yield`](./03%20javascript.md#yield)
+- [Generator delegation](./03%20javascript.md#generator-delegation)
+- [Async Iterators](./03%20javascript.md#async-iterators)
+- [`for await...of`](./03%20javascript.md#for-awaitof)
+
+</details>
+
+
+<details>
+<summary><strong>Map, Set & Weak Collections</strong></summary>
+
+- [Map](./03%20javascript.md#map)
+- [Map keys](./03%20javascript.md#map-keys)
+- [Map methods](./03%20javascript.md#map-methods)
+- [Set](./03%20javascript.md#set)
+- [Set methods](./03%20javascript.md#set-methods)
+- [WeakMap](./03%20javascript.md#weakmap)
+- [WeakSet](./03%20javascript.md#weakset)
+- [Map vs Object](./03%20javascript.md#map-vs-object)
+- [Set vs Array](./03%20javascript.md#set-vs-array)
+- [Weak references](./03%20javascript.md#weak-references)
+- [Garbage collection](./03%20javascript.md#garbage-collection)
+- [Garbage collection use cases](./03%20javascript.md#garbage-collection-use-cases)
+
+</details>
+
+<details>
+<summary><strong>Modules</strong></summary>
+
+- [Why Modules?](./03%20javascript.md#why-modules)
+- [ES Modules](./03%20javascript.md#es-modules)
+- [export](./03%20javascript.md#export)
+- [export default](./03%20javascript.md#export-default)
+- [import](./03%20javascript.md#import)
+- [Named imports & default imports](./03%20javascript.md#named-imports--default-imports)
+- [Namespace imports](./03%20javascript.md#namespace-imports)
+- [Re-exporting](./03%20javascript.md#re-exporting)
+- [Dynamic imports](./03%20javascript.md#dynamic-imports)
+- [CommonJS](./03%20javascript.md#commonjs)
+- [require()](./03%20javascript.md#require)
+- [module.exports](./03%20javascript.md#module-exports)
+- [ES Modules vs CommonJS](./03%20javascript.md#es-modules-vs-commonjs)
+- [Module resolution](./03%20javascript.md#module-resolution)
+- [Circular dependencies](./03%20javascript.md#circular-dependencies)
+
+</details>
+
+<details>
+<summary><strong>JSON & Data Handling</strong></summary>
+
+- [JSON syntax](./03%20javascript.md#json-syntax)
+- [JSON.parse()](./03%20javascript.md#json-parse)
+- [JSON.stringify()](./03%20javascript.md#json-stringify)
+- [Serialization and Deserialization](./03%20javascript.md#serialization-and-deserialization)
+- [Deep cloning concepts](./03%20javascript.md#deep-cloning-concepts)
+- [Structured cloning](./03%20javascript.md#structured-cloning)
+- [structuredClone() method](./03%20javascript.md#structuredclone-method)
+- [Handling API data](./03%20javascript.md#handling-api-data)
+- [Transforming nested data](./03%20javascript.md#transforming-nested-data)
+
+</details>
+
+
+# Regular Expressions
+
+<details>
+<summary><strong>Regular Expressions</strong></summary>
+
+- [What are regex?](./04%20javascript.md#what-are-regex)
+- [Regex Syntax](./04%20javascript.md#regex-syntax)
+- [Character Classes](./04%20javascript.md#character-classes)
+- [Quantifiers](./04%20javascript.md#quantifiers)
+- [Groups](./04%20javascript.md#groups)
+- [Capturing Groups](./04%20javascript.md#capturing-groups)
+- [Non-Capturing Groups](./04%20javascript.md#non-capturing-groups)
+- [Alternation](./04%20javascript.md#alternation)
+- [Anchors](./04%20javascript.md#anchors)
+- [Flags](./04%20javascript.md#flags)
+- [g,i,m,s,u,y,d,v Flags](./04%20javascript.md#gimsyudv-flags)
+- [test(), match(), matchAll(), replace(), replaceAll(), search(), and split() Methods](./04%20javascript.md#test-match-matchall-replace-replaceall-search-and-split-methods)
+
+</details>
+
+<details>
+<summary><strong>Dates & Time</strong></summary>
+
+- [Date Object](./04%20javascript.md#date-object)
+- [Creating Dates](./04%20javascript.md#creating-dates)
+- [Getting Date Values](./04%20javascript.md#getting-date-values)
+- [Setting Date Values](./04%20javascript.md#setting-date-values)
+- [Formatting Dates](./04%20javascript.md#formatting-dates)
+- [Timestamps](./04%20javascript.md#timestamps)
+- [UTC](./04%20javascript.md#utc)
+- [Time Zones](./04%20javascript.md#time-zones)
+- [Date Calculations](./04%20javascript.md#date-calculations)
+- [Intl.DateTimeFormat](./04%20javascript.md#intl-datetimeformat)
+- [Temporal API Concepts](./04%20javascript.md#temporal-api-concepts)
+
+</details>
+
+<details>
+<summary><strong>Internationalization (i18n)</strong></summary>
+
+- [Intl](./04%20javascript.md#intl)
+- [Intl.NumberFormat](./04%20javascript.md#intl-numberformat)
+- [Intl.DateTimeFormat](./04%20javascript.md#intl-datetimeformat)
+- [Intl.Collator](./04%20javascript.md#intl-collator)
+- [Intl.RelativeTimeFormat](./04%20javascript.md#intl-relativetimeformat)
+- [Locale handling](./04%20javascript.md#locale-handling)
+- [Currency formatting](./04%20javascript.md#currency-formatting)
+- [Number formatting](./04%20javascript.md#number-formatting)
+
+</details>
+
+<details>
+<summary><strong>Memory & Performance</strong></summary>
+
+- [Stack vs Heap](./04%20javascript.md#stack-vs-heap)
+- [Garbage Collection](./04%20javascript.md#garbage-collection)
+- [Memory Leaks](./04%20javascript.md#memory-leaks)
+- [Detached DOM Nodes](./04%20javascript.md#detached-dom-nodes)
+- [Unnecessary event listeners](./04%20javascript.md#unnecessary-event-listeners)
+- [Closures and memory](./04%20javascript.md#closures-and-memory)
+- [Performance profiling](./04%20javascript.md#performance-profiling)
+- [Browser DevTools Performance](./04%20javascript.md#browser-devtools-performance)
+- [Browser Memory tools](./04%20javascript.md#browser-memory-tools)
+- [Lazy loading](./04%20javascript.md#lazy-loading)
+- [Code splitting](./04%20javascript.md#code-splitting)
+- [Memoization](./04%20javascript.md#memoization)
+- [Efficient DOM manipulation](./04%20javascript.md#efficient-dom-manipulation)
+- [Event delegation](./04%20javascript.md#event-delegation)
+- [Debouncing and throttling](./04%20javascript.md#debouncing-and-throttling)
+
+</details>
+
+
+<details>
+<summary><strong>Security</strong></summary>
+
+- [XSS (Cross-Site Scripting)](./04%20javascript.md#xss-cross-site-scripting)
+- [DOM-based XSS](./04%20javascript.md#dom-based-xss)
+- [SQL Injection awareness](./04%20javascript.md#sql-injection-awareness)
+- [CSRF (Cross-Site Request Forgery)](./04%20javascript.md#csrf-cross-site-request-forgery)
+- [CORS (Cross-Origin Resource Sharing)](./04%20javascript.md#cors-cross-origin-resource-sharing)
+- [Content Security Policy (CSP)](./04%20javascript.md#content-security-policy-csp)
+- [Input validation and sanitization](./04%20javascript.md#input-validation-and-sanitization)
+- [Output escaping](./04%20javascript.md#output-escaping)
+- [Secure localStorage usage](./04%20javascript.md#secure-localstorage-usage)
+- [JWT Security concepts](./04%20javascript.md#jwt-security-concepts)
+- [Never trust client-side validation](./04%20javascript.md#never-trust-client-side-validation)
+- [Prototype pollution](./04%20javascript.md#prototype-pollution)
+
+</details>
+
+
+<details>
+<summary><strong>Functional Programming</strong></summary>
+
+- [Pure Functions](./04%20javascript.md#pure-functions)
+- [Immutability](./04%20javascript.md#immutability)
+- [First-Class Functions](./04%20javascript.md#first-class-functions)
+- [Higher-Order Functions](./04%20javascript.md#higher-order-functions)
+- [Function Composition](./04%20javascript.md#function-composition)
+- [Currying](./04%20javascript.md#currying)
+- [Partial Application](./04%20javascript.md#partial-application)
+- [Map](./04%20javascript.md#map)
+- [Filter](./04%20javascript.md#filter)
+- [Reduce](./04%20javascript.md#reduce)
+- [Referential Transparency](./04%20javascript.md#referential-transparency)
+- [Side Effects](./04%20javascript.md#side-effects)
+- [Declarative Programming](./04%20javascript.md#declarative-programming)
+- [Imperative Programming](./04%20javascript.md#imperative-programming)
+
+</details>
+
+<details>
+<summary><strong>Advanced Browser Concepts</strong></summary>
+
+- [Rendering pipeline](./04%20javascript.md#rendering-pipeline)
+- [Reflow and Repaint](./04%20javascript.md#reflow-and-repaint)
+- [Layout](./04%20javascript.md#layout)
+- [Compositing](./04%20javascript.md#compositing)
+- [Critical Rendering concepts](./04%20javascript.md#critical-rendering-concepts)
+- [requestAnimationFrame](./04%20javascript.md#requestanimationframe)
+- [Intersection Observer](./04%20javascript.md#intersection-observer)
+- [Mutation Observer](./04%20javascript.md#mutation-observer)
+- [Resize Observer](./04%20javascript.md#resize-observer)
+- [Web Workers](./04%20javascript.md#web-workers)
+- [Service Workers](./04%20javascript.md#service-workers)
+- [WebSockets](./04%20javascript.md#websockets)
+- [WebRTC](./04%20javascript.md#webrtc)
+- [Server-Sent Events (SSE)](./04%20javascript.md#server-sent-events-sse)
+- [WebAssembly](./04%20javascript.md#webassembly)
+- [IndexedDB](./04%20javascript.md#indexeddb)
+- [Cache API](./04%20javascript.md#cache-api)
+
+</details>
+
+<details>
+<summary><strong>JavaScript Design Patterns</strong></summary>
+
+- [Module Pattern](./04%20javascript.md#module-pattern)
+- [Revealing Module Pattern](./04%20javascript.md#revealing-module-pattern)
+- [Factory Pattern](./04%20javascript.md#factory-pattern)
+- [Constructor Pattern](./04%20javascript.md#constructor-pattern)
+- [Singleton Pattern](./04%20javascript.md#singleton-pattern)
+- [Observer Pattern](./04%20javascript.md#observer-pattern)
+- [Pub/Sub Pattern](./04%20javascript.md#pubsub-pattern)
+- [Strategy Pattern](./04%20javascript.md#strategy-pattern)
+- [Adapter Pattern](./04%20javascript.md#adapter-pattern)
+- [Decorator Pattern](./04%20javascript.md#decorator-pattern)
+- [Proxy Pattern](./04%20javascript.md#proxy-pattern)
+- [Command Pattern](./04%20javascript.md#command-pattern)
+- [Dependency Injection](./04%20javascript.md#dependency-injection)
+- [Composition Pattern](./04%20javascript.md#composition-pattern)
+
+</details>
+
+<details>
+<summary><strong>Testing JavaScript</strong></summary>
+
+- [Why testing?](./04%20javascript.md#why-testing)
+- [Types of Testing](./04%20javascript.md#types-of-testing)
+- [Unit testing](./04%20javascript.md#unit-testing)
+- [Integration testing](./04%20javascript.md#integration-testing)
+- [End-to-End (E2E) testing](./04%20javascript.md#end-to-end-e2e-testing)
+- [Test cases](./04%20javascript.md#test-cases)
+- [Assertions](./04%20javascript.md#assertions)
+- [Mocking](./04%20javascript.md#mocking)
+- [Spying](./04%20javascript.md#spying)
+- [Stubbing](./04%20javascript.md#stubbing)
+- [Code Coverage](./04%20javascript.md#code-coverage)
+- [Jest](./04%20javascript.md#jest)
+- [Vitest](./04%20javascript.md#vitest)
+- [Playwright/Cypress concepts](./04%20javascript.md#playwrightcypress-concepts)
+- [Cypress](./04%20javascript.md#cypress)
+
+</details>
+
+<details>
+<summary><strong>Debugging</strong></summary>
+
+- [Browser DevTools](./04%20javascript.md#browser-devtools)
+- [Console](./04%20javascript.md#console)
+- [Breakpoints](./04%20javascript.md#breakpoints)
+- [Conditional Breakpoints](./04%20javascript.md#conditional-breakpoints)
+- [Watch expressions](./04%20javascript.md#watch-expressions)
+- [Call stack inspection](./04%20javascript.md#call-stack-inspection)
+- [Network tab](./04%20javascript.md#network-tab)
+- [Sources tab](./04%20javascript.md#sources-tab)
+- [Performance tab](./04%20javascript.md#performance-tab)
+- [Memory tab](./04%20javascript.md#memory-tab)
+- [Debugging async code](./04%20javascript.md#debugging-async-code)
+- [Reading stack traces](./04%20javascript.md#reading-stack-traces)
+- [Common JavaScript errors](./04%20javascript.md#common-javascript-errors)
+
+</details>
+
+
+<details>
+<summary><strong>Advanced JavaScript Topics</strong></summary>
+
+- [Symbols](./04%20javascript.md#symbols)
+- [Proxy](./04%20javascript.md#proxy)
+- [Reflect](./04%20javascript.md#reflect)
+- [WeakRef](./04%20javascript.md#weakref)
+- [FinalizationRegistry](./04%20javascript.md#finalizationregistry)
+- [BigInt](./04%20javascript.md#bigint)
+- [Tagged Template literals](./04%20javascript.md#tagged-template-literals)
+- [Property descriptors](./04%20javascript.md#property-descriptors)
+- [Getters/Setters](./04%20javascript.md#getterssetters)
+- [Enumerability](./04%20javascript.md#enumerability)
+- [Configurable properties](./04%20javascript.md#configurable-properties)
+- [Writable properties](./04%20javascript.md#writable-properties)
+- [Object.defineProperty()](./04%20javascript.md#objectdefineproperty)
+- [Object.getOwnPropertyDescriptor()](./04%20javascript.md#objectgetownpropertydescriptor)
+- [Object.getOwnPropertyDescriptors()](./04%20javascript.md#objectgetownpropertydescriptors)
+- [Metaprogramming](./04%20javascript.md#metaprogramming)
+- [Tail-call concepts](./04%20javascript.md#tail-call-concepts)
+- [Structured cloning](./04%20javascript.md#structured-cloning)
+- [Transferable Objects](./04%20javascript.md#transferable-objects)
+
+</details>
+

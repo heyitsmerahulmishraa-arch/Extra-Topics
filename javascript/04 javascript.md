@@ -46,7 +46,7 @@ const regex = new RegExp('ab+c');
 - `d`: Generates indices for substring matches.
 - `v`: Enables Unicode property escapes.
 
-## Examples
+### Examples
 ```javascript
 // Example 1: Using regex literal
 const regex1 = /hello/;
@@ -2482,7 +2482,7 @@ There are several popular testing frameworks available for JavaScript, each with
 - QUnit: A powerful testing framework primarily used for testing jQuery applications. It provides a simple API for writing tests and supports asynchronous testing.
 - Ava: A minimalistic testing framework that focuses on speed and simplicity. It runs tests concurrently, making it suitable for large test suites.
 
-## Example of Unit Testing with Jest
+### Example of Unit Testing with Jest
 ```javascript
 // sum.js (function to be tested)
 function sum(a, b) {
@@ -2572,7 +2572,7 @@ describe('UserService', () => {
 ## Unit testing
 Unit testing is a software testing technique that focuses on testing individual units or components of a software application in isolation. The goal of unit testing is to verify that each unit of code, such as a function or method, behaves as expected and produces the correct output for a given input. Unit tests are typically automated and can be run frequently during development to catch bugs early and ensure code quality.
 
-## Example of Unit Testing with Jest
+### Example of Unit Testing with Jest
 ```javascript
 // math.js (function to be tested)
 function add(a, b) {
@@ -2837,7 +2837,7 @@ test('should call the function with correct arguments', () => {
 });
 ```
 
-## Example of Spying with Sinon
+### Example of Spying with Sinon
 ```javascript
 // Example of spying with Sinon
 const sinon = require('sinon');
