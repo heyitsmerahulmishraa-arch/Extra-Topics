@@ -2,4 +2,4 @@
 
 | Topic | View |
 |-------|------|
-|JavaScript|[View](../Extra-Topics/javascript/Readme.md)|
+|JavaScript|[View](./javascript/Readme.md)|
