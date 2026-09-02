@@ -817,3 +817,33 @@
 
 </details>
 
+# Real-World JavaScript Skills
+
+<details>
+<summary><strong>Real-World JavaScript Skills</strong></summary>
+
+- [Form validation](./05%20javascript.md#form-validation)
+- [Search Functionality](./05%20javascript.md#search-functionality)
+- [Pagination](./05%20javascript.md#pagination)
+- [Infinite Scrolling](./05%20javascript.md#infinite-scrolling)
+- [Auto-complete](./05%20javascript.md#auto-complete)
+- [Image Preview](./05%20javascript.md#image-preview)
+- [File upload](./05%20javascript.md#file-upload)
+- [Drag and Drop](./05%20javascript.md#drag-and-drop)
+- [Modal Systems](./05%20javascript.md#modal-systems)
+- [Tabs](./05%20javascript.md#tabs)
+- [Accordions](./05%20javascript.md#accordions)
+- [Dropdowns](./05%20javascript.md#dropdowns)
+- [Toast notifications](./05%20javascript.md#toast-notifications)
+- [Debounced Search](./05%20javascript.md#debounced-search)
+- [Throttled Scrolling](./05%20javascript.md#throttled-scrolling)
+- [API integration](./05%20javascript.md#api-integration)
+- [Authentication flow](./05%20javascript.md#authentication-flow)
+- [Protected routes](./05%20javascript.md#protected-routes)
+- [Error states](./05%20javascript.md#error-states)
+- [Loading States](./05%20javascript.md#loading-states)
+- [Optimistic UI](./05%20javascript.md#optimistic-ui)
+- [Caching](./05%20javascript.md#caching)
+- [Offline handling](./05%20javascript.md#offline-handling)
+
+</details>
