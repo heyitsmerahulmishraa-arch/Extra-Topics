@@ -1837,3 +1837,189 @@ console.log(person);
 
 
 
+# Strings
+
+Strings in JavaScript are used to represent textual data. They are immutable, meaning once a string is created, it cannot be changed. You can create strings using single quotes, double quotes, or backticks (for template literals).
+
+## How to Create Strings
+
+You can create strings in JavaScript using single quotes, double quotes, or backticks. Here are some examples:
+
+```javascript
+let singleQuoteString = 'Hello';
+let doubleQuoteString = "World";
+let templateLiteralString = `Hello, ${doubleQuoteString}!`;
+console.log(singleQuoteString); // Output: Hello
+console.log(doubleQuoteString); // Output: World
+console.log(templateLiteralString); // Output: Hello, World!
+```
+
+## What is Escape Characters
+
+Escape characters in JavaScript are used to represent special characters within strings. They are preceded by a backslash (`\`). Here are some common escape characters:
+
+| Escape Character | Description |
+|-----------------|-------------|
+| `\'` | Single quote |
+| `\"` | Double quote |
+| `\\` | Backslash |
+| `\n` | New line |
+| `\r` | Carriage return |
+| `\t` | Tab |
+| `\b` | Backspace |
+| `\f` | Form feed |
+
+Example:
+```javascript
+let stringWithEscapeCharacters = 'Hello\nWorld';
+console.log(stringWithEscapeCharacters);
+// Output:
+// Hello
+// World
+```
+
+## What is String immutability
+
+String immutability in JavaScript means that once a string is created, it cannot be changed. Any operation that appears to modify a string actually creates a new string. Here is an example:
+
+```javascript
+let originalString = 'Hello';
+let modifiedString = originalString.toUpperCase();
+console.log(originalString); // Output: Hello
+console.log(modifiedString); // Output: HELLO
+```
+
+## String Methods
+
+JavaScript provides a variety of methods to work with strings. Here are some commonly used string methods:
+
+| Method | Description |
+|--------|-------------|
+| `charAt(index)` | Returns the character at the specified index. |
+| `concat(str1, str2, ...)` | Combines the text of two or more strings and returns a new string. |
+| `includes(substring)` | Determines whether a string contains the characters of a specified string. |
+| `indexOf(substring)` | Returns the index of the first occurrence of a specified value in a string. |
+| `slice(start, end)` | Extracts a section of a string and returns it as a new string. |
+| `split(separator)` | Splits a string into an array of substrings. |
+| `toLowerCase()` | Converts a string to lowercase letters. |
+| `toUpperCase()` | Converts a string to uppercase letters. |
+| `trim()` | Removes whitespace from both ends of a string. |
+| `replace(searchValue, newValue)` | Replaces occurrences of a specified value with a new value. |
+| `startsWith(substring)` | Determines whether a string starts with the characters of a specified string. |
+| `endsWith(substring)` | Determines whether a string ends with the characters of a specified string. |
+| `repeat(count)` | Returns a new string with a specified number of copies of the original string. |
+| `substring(start, end)` | Returns the part of the string between the start and end indexes. |
+| `valueOf()` | Returns the primitive value of a string. |
+| `padStart(targetLength, padString)` | Pads the current string with another string (repeated, if needed) so that the resulting string reaches the given length. |
+| `padEnd(targetLength, padString)` | Pads the current string with another string (repeated, if needed) so that the resulting string reaches the given length. |
+| `match(regexp)` | Retrieves the result of matching a string against a regular expression. |
+| `search(regexp)` | Executes a search for a match between a regular expression and this string. |
+| `replaceAll(searchValue, newValue)` | Replaces all occurrences of a specified value with a new value. |
+| `localeCompare(compareString)` | Compares two strings in the current locale. |
+| `normalize(form)` | Returns the Unicode Normalization Form of the string. |
+| `charCodeAt(index)` | Returns the Unicode of the character at the specified index. |
+| `fromCharCode(code)` | Returns a string created from the specified sequence of UTF-16 code units. |
+| `codePointAt(index)` | Returns a non-negative integer that is the Unicode code point value at the given position. |
+| `fromCodePoint(codePoint)` | Returns a string created by using the specified sequence of code points. |
+| `toString()` | Returns a string representing the specified object. |
+
+## What is String interpolation?
+
+String interpolation in JavaScript allows you to embed expressions within string literals. This is typically done using template literals, which are enclosed by backticks (`` ` ``) instead of single or double quotes. Expressions inside template literals are indicated by `${expression}`.
+
+Example:
+```javascript
+const name = "John";
+const age = 30;
+const message = `My name is ${name} and I am ${age} years old.`;
+console.log(message); // Output: My name is John and I am 30 years old.
+```
+
+# Numbers & Math
+
+Numbers in JavaScript can be represented as integers or floating-point values. JavaScript provides various methods and properties to work with numbers, as well as the built-in `Math` object for mathematical operations.
+
+## Number type
+
+In JavaScript, the `Number` type is used to represent both integer and floating-point numbers. There is no separate type for integers.
+
+Example:
+```javascript
+const integer = 42;
+const floatingPoint = 3.14;
+console.log(typeof integer); // Output: "number"
+console.log(typeof floatingPoint); // Output: "number"
+```
+
+## Math object
+
+The `Math` object in JavaScript provides properties and methods for mathematical constants and functions. It is not a constructor, so all properties and methods are static and can be accessed directly from the `Math` object.
+
+Example:
+```javascript
+console.log(Math.PI); // Output: 3.141592653589793
+console.log(Math.sqrt(16)); // Output: 4
+console.log(Math.abs(-7)); // Output: 7
+console.log(Math.floor(4.7)); // Output: 4
+console.log(Math.ceil(4.3)); // Output: 5
+console.log(Math.random()); // Output: A random number between 0 and 1
+```
+
+## Common Math Methods
+
+Here are some commonly used methods from the `Math` object:
+
+| Method | Description |
+|--------|-------------|
+| `Math.max(...numbers)` | Returns the largest of the given numbers. |
+| `Math.min(...numbers)` | Returns the smallest of the given numbers. |
+| `Math.pow(base, exponent)` | Returns the base raised to the power of the exponent. |
+| `Math.round(number)` | Returns the value of a number rounded to the nearest integer. |
+| `Math.trunc(number)` | Returns the integer part of a number by removing any fractional digits. |
+| `Math.sin(angle)` | Returns the sine of an angle (in radians). |
+| `Math.cos(angle)` | Returns the cosine of an angle (in radians). |
+| `Math.tan(angle)` | Returns the tangent of an angle (in radians). |
+| `Math.log(number)` | Returns the natural logarithm (base `e`) of a number. |
+| `Math.exp(number)` | Returns `e` raised to the power of the given number. |
+| `Math.sqrt(number)` | Returns the square root of a number. |
+| `Math.abs(number)` | Returns the absolute value of a number. |
+| `Math.floor(number)` | Returns the largest integer less than or equal to a given number. |
+| `Math.ceil(number)` | Returns the smallest integer greater than or equal to a given number. |
+| `Math.random()` | Returns a random number between 0 (inclusive) and 1 (exclusive). |
+| `Math.sign(number)` | Returns the sign of a number, indicating whether it is positive, negative, or zero. |
+| `Math.cbrt(number)` | Returns the cube root of a number. |
+| `Math.hypot(...numbers)` | Returns the square root of the sum of the squares of its arguments. |
+| `Math.clz32(number)` | Returns the number of leading zero bits in the 32-bit binary representation of a number. |
+| `Math.imul(a, b)` | Returns the result of a 32-bit integer multiplication of the two parameters. |
+| `Math.fround(number)` | Returns the nearest 32-bit single precision float representation of a number. |
+| `Math.log10(number)` | Returns the base 10 logarithm of a number. |
+| `Math.log2(number)` | Returns the base 2 logarithm of a number. |
+| `Math.log1p(number)` | Returns the natural logarithm of 1 plus the given number. |
+| `Math.expm1(number)` | Returns `e` raised to the power of the given number minus 1. |
+| `Math.sinh(number)` | Returns the hyperbolic sine of a number. |
+| `Math.cosh(number)` | Returns the hyperbolic cosine of a number. |
+| `Math.tanh(number)` | Returns the hyperbolic tangent of a number. |
+| `Math.asin(number)` | Returns the arcsine of a number (in radians). |
+| `Math.acos(number)` | Returns the arccosine of a number (in radians). |
+| `Math.atan(number)` | Returns the arctangent of a number (in radians). |
+| `Math.atan2(y, x)` | Returns the arctangent of the quotient of its arguments (in radians). |
+| `Math.asinh(number)` | Returns the hyperbolic arcsine of a number. |
+| `Math.acosh(number)` | Returns the hyperbolic arccosine of a number. |
+| `Math.atanh(number)` | Returns the hyperbolic arctangent of a number. |
+| `Math.cbrt(number)` | Returns the cube root of a number. |
+
+## Number Methods
+
+| Method | Description |
+|--------|-------------|
+| `Number.isFinite(value)` | Determines whether the passed value is a finite number. |
+| `Number.isInteger(value)` | Determines whether the passed value is an integer. |
+| `Number.isNaN(value)` | Determines whether the passed value is `NaN`. |
+| `Number.isSafeInteger(value)` | Determines whether the passed value is a safe integer. |
+| `Number.parseFloat(string)` | Parses a string argument and returns a floating point number. |
+| `Number.parseInt(string, radix)` | Parses a string argument and returns an integer of the specified radix. |
+| `Number.prototype.toExponential(fractionDigits)` | Returns a string representing the number in exponential notation. |
+| `Number.prototype.toFixed(digits)` | Returns a string representing the number in fixed-point notation. |
+| `Number.prototype.toPrecision(precision)` | Returns a string representing the number to the specified precision. |
+| `Number.prototype.toString(radix)` | Returns a string representing the number in the specified radix. |
+| `Number.prototype.valueOf()` | Returns the primitive value of the number object. |

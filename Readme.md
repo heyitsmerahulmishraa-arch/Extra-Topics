@@ -2,3 +2,4 @@ This repository contains notes and resources for learning backend development wi
 
 ## Table of Contents
 - [JavaScript](./JavaScript/Readme.md)
+- [Terminal](./Terminal/Readme.md)
